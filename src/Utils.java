@@ -7,50 +7,7 @@ import java.util.Objects;
 
 public class Utils {
 
-    public static class Data {
-        public String name;
-        public String type;
-        public int typeSize;
-        public ArrayList<Integer> dims;
-        public int bytes;
 
-        Data(String mName, String mType, ArrayList<Integer> mSize) {
-            name = mName;
-            type = mType;
-            dims = mSize;
-            switch (this.type) {
-                case "boolean":
-                case "byte":
-                    typeSize = 1;
-                    break;
-                case "char":
-                case "short":
-                    typeSize = 2;
-                    break;
-                case "float":
-                case "int":
-                    typeSize = 4;
-                    break;
-                case "long":
-                case "double":
-                    typeSize = 8;
-                    break;
-            }
-
-        }
-
-        void calculateMemory() {
-            int result = typeSize;
-            for (int i = 0; i < dims.size(); i++)
-                result = 24 + result * dims.get(i);
-            bytes = result;
-        }
-
-        void print() {
-            System.out.println(this.name + " -> " + this.dims);
-        }
-
-    }
 
 
     public static Data getInfo(String input) {
@@ -69,7 +26,7 @@ public class Utils {
 
     }
 
-    public static String nameOfVar(String str) {
+    private static String nameOfVar(String str) {
         int index = str.indexOf("[");
         if (index == -1)
             return str.substring(0, str.length() - 1);

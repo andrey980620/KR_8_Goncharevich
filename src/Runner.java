@@ -9,7 +9,7 @@ public class Runner {
         File file = new File("src//bytes.in");
         Scanner in = new Scanner(file);
 
-        ArrayList<Utils.Data> vars = new ArrayList<>();
+        ArrayList<Data> vars = new ArrayList<>();
         while (in.hasNextLine()) {
             String tmp = in.nextLine();
             vars.add(Utils.getInfo(tmp));
@@ -17,20 +17,20 @@ public class Runner {
         }
 
         String file3 = new String();
-        for (int i = 0; i < vars.size(); i++) {
-            file3 += vars.get(i).bytes + "\r\n";
+        for (Data var : vars) {
+            file3 += var.bytes + "\r\n";
         }
 
         String file1 = new String();
         vars.sort(Utils.compByName);
-        for (int i = 0; i < vars.size(); i++) {
-            file1 += vars.get(i).name + "\r\n";
+        for (Data var : vars) {
+            file1 += var.name + "\r\n";
         }
 
         String file2 = new String();
         vars.sort(Utils.compByType);
-        for (int i = 0; i < vars.size(); i++) {
-            file2 += vars.get(i).name + "\r\n";
+        for (Data var : vars) {
+            file2 += var.name + "\r\n";
         }
 
         Utils.createFile("src//bytes1.out", file1);
