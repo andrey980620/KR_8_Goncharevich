@@ -16,22 +16,13 @@ public class Runner {
             vars.get(vars.size() - 1).calculateMemory();
         }
 
-        String file3 = new String();
-        for (Data var : vars) {
-            file3 += var.bytes + "\r\n";
-        }
+        String file3 = Data.toPrint(vars,"bytes");
 
-        String file1 = new String();
-        vars.sort(Utils.compByName);
-        for (Data var : vars) {
-            file1 += var.name + "\r\n";
-        }
+        vars.sort(Data.compByName);
+        String file1 = Data.toPrint(vars,"name");
 
-        String file2 = new String();
-        vars.sort(Utils.compByType);
-        for (Data var : vars) {
-            file2 += var.name + "\r\n";
-        }
+        vars.sort(Data.compByType);
+        String file2 = Data.toPrint(vars,"name");
 
         Utils.createFile("src//bytes1.out", file1);
         Utils.createFile("src//bytes2.out", file2);

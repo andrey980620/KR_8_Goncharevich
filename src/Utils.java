@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Objects;
 
 public class Utils {
@@ -47,7 +46,5 @@ public class Utils {
         }
     }
 
-    public static Comparator<Data> compByName = (o1, o2) -> o1.name.compareTo(o2.name);
-    public static Comparator<Data> compByType = (o1, o2) -> o1.typeSize-o2.typeSize;
 }
 

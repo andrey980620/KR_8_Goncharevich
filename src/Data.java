@@ -1,11 +1,13 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Data {
-    String name;
-    String type;
-    int typeSize;
-    ArrayList<Integer> dims;
-    int bytes;
+
+    private String name;
+    private String type;
+    private int typeSize;
+    private ArrayList<Integer> dims;
+    private int bytes;
 
     Data(String mName, String mType, ArrayList<Integer> mSize) {
         name = mName;
@@ -38,8 +40,23 @@ public class Data {
         bytes = result;
     }
 
-    void print() {
-        System.out.println(this.name + " -> " + this.dims);
+    static String toPrint(ArrayList<Data> list, String field) {
+        String result = new String();
+        switch (field) {
+            case "bytes":
+                for (Data arrayInfo : list) {
+                    result += arrayInfo.bytes + "\r\n";
+                }
+                break;
+            case "name":
+                for (Data arrayInfo : list) {
+                    result += arrayInfo.name + "\r\n";
+                }
+                break;
+        }
+        return result;
     }
 
+    public static Comparator<Data> compByName = (o1, o2) -> o1.name.compareTo(o2.name);
+    public static Comparator<Data> compByType = (o1, o2) -> o1.typeSize - o2.typeSize;
 }
